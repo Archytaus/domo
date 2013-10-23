@@ -17,6 +17,7 @@ describe Robot do
 
     @robot.place(@location_mock)
     assert_equal @robot.report, '[1, 2] North'
+    @location_mock.verify
   end
 
   it 'can move forward' do    
