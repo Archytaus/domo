@@ -20,7 +20,6 @@ describe Robot do
   end
 
   it 'can move forward' do    
-    @location_mock.expect :report, '[1, 3] North'
     @location_mock.expect :move, nil
 
     assert @robot.respond_to?(:move), 'expected the robot to have a move method'
@@ -28,7 +27,28 @@ describe Robot do
     @robot.place(@location_mock)
     @robot.move
 
-    assert_equal @robot.report, '[1, 3] North'
+    @location_mock.verify
+  end
+
+  it 'can rotate left' do
+    @location_mock.expect :rotate_left, nil
+
+    assert @robot.respond_to?(:rotate_left), 'expected the robot to have a rotate_left method'
+
+    @robot.place(@location_mock)
+    @robot.rotate_left
+
+    @location_mock.verify
+  end
+
+  it 'can rotate right' do
+    @location_mock.expect :rotate_right, nil
+
+    assert @robot.respond_to?(:rotate_right), 'expected the robot to have a rotate_right method'
+
+    @robot.place(@location_mock)
+    @robot.rotate_right
+
     @location_mock.verify
   end
 end
