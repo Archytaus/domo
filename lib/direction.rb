@@ -1,3 +1,18 @@
+class Direction
+  def self.from_str(dir_str)
+    case dir_str
+    when 'North'
+      NorthDirection.new
+    when 'South'
+      SouthDirection.new
+    when 'East'
+      EastDirection.new
+    when 'West'
+      WestDirection.new
+    end
+  end
+end
+
 class NorthDirection
   def rotate_left
     return WestDirection.new

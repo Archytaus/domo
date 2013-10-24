@@ -19,4 +19,8 @@ class Location
   def rotate_right
     @direction.rotate_right
   end
+
+  def self.create(x, y, direction)
+    Location.new(Position.new(x, y), Direction.from_str(direction))
+  end
 end

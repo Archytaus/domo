@@ -1,6 +1,10 @@
 class Robot
-  def place(location)
+  def initialize(location = nil)
     @location = location
+  end
+
+  def place(x, y, direction)
+    @location = Location.create(x, y, direction)
   end
 
   def report
