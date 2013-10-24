@@ -16,7 +16,7 @@ describe Robot do
     assert @robot.respond_to?(:report), 'expected the robot to have a report method'
 
     @robot.place(@location_mock)
-    assert_equal @robot.report, '[1, 2] North'
+    assert_equal '[1, 2] North', @robot.report
     @location_mock.verify
   end
 

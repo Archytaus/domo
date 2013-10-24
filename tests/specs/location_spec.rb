@@ -20,7 +20,7 @@ describe Location do
       @position_mock.expect :report, '[0, 0]'
       @direction_mock.expect :report, 'North'
 
-      assert_equal @location.report, '[0, 0] North'
+      assert_equal '[0, 0] North', @location.report
       @direction_mock.verify
       @position_mock.verify
     end
@@ -30,7 +30,7 @@ describe Location do
       @position_mock.expect :report, '[4, 3]'
       @direction_mock.expect :report, 'East'
 
-      assert_equal @location.report, '[4, 3] East'
+      assert_equal '[4, 3] East', @location.report
       @direction_mock.verify
       @position_mock.verify
     end
