@@ -1,7 +1,8 @@
 describe Robot do
   before do
     @location_mock = Minitest::Mock.new
-    @robot = Robot.new(@location_mock)
+    @robot = Robot.new
+    @robot.location = @location_mock
   end
 
   it 'can report its location' do

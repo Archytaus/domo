@@ -13,11 +13,11 @@ class Location
   end
 
   def rotate_left
-    @direction.rotate_left
+    @direction = @direction.rotate_left
   end
 
   def rotate_right
-    @direction.rotate_right
+    @direction = @direction.rotate_right
   end
 
   def self.create(x, y, direction)

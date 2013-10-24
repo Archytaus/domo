@@ -1,7 +1,5 @@
 class Robot
-  def initialize(location = nil)
-    @location = location
-  end
+  attr_accessor :location
 
   def place(x, y, direction)
     @location = Location.create(x, y, direction)
