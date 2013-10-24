@@ -11,4 +11,12 @@ class Location
   def move_forward
     @position += @direction.to_position
   end
+
+  def rotate_left
+    @direction.rotate_left
+  end
+
+  def rotate_right
+    @direction.rotate_right
+  end
 end

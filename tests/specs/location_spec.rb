@@ -49,16 +49,45 @@ describe Location do
       @new_position_mock = Minitest::Mock.new
       @position_mock.expect :+, @new_position_mock, [@direction_position_mock]
       @direction_mock.expect :to_position, @direction_position_mock
-      
-      @new_position_mock.expect :report, '[0, 1]'
-      @direction_mock.expect :report, 'North'
 
       @location.move_forward
-      assert_equal @location.report, '[0, 1] North'
-
+      
       @direction_mock.verify
       @position_mock.verify
-      @new_position_mock.verify
+    end
+  end
+
+  describe 'rotate left' do
+    it 'can move rotate left' do
+      @location = Location.new(@position_mock, @direction_mock)
+      assert @location.respond_to?(:rotate_left), 'expected the location to have a rotate_left method'
+    end
+
+    it 'rotates to the left' do
+      @location = Location.new(@position_mock, @direction_mock)
+
+      @direction_mock.expect :rotate_left, nil
+
+      @location.rotate_left
+
+      @direction_mock.verify
+    end
+  end
+
+    describe 'rotate right' do
+    it 'can move rotate right' do
+      @location = Location.new(@position_mock, @direction_mock)
+      assert @location.respond_to?(:rotate_right), 'expected the location to have a rotate_right method'
+    end
+
+    it 'rotates to the right' do
+      @location = Location.new(@position_mock, @direction_mock)
+
+      @direction_mock.expect :rotate_right, nil
+
+      @location.rotate_right
+
+      @direction_mock.verify
     end
   end
 end
