@@ -1,11 +1,14 @@
 class Location
-  def initialize(x, y, direction)
-    @x = x
-    @y = y
+  def initialize(position, direction)
+    @position = position
     @direction = direction
   end
 
   def report
-    "[#{@x}, #{@y}] #{@direction.report}"
+    "#{@position.report} #{@direction.report}"
+  end
+
+  def move_forward
+    @position += @direction.to_position
   end
 end

@@ -8,7 +8,7 @@ class Robot
   end
 
   def move
-    @location.move
+    @location.move_forward
   end
 
   def rotate_left

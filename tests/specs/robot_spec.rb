@@ -21,7 +21,7 @@ describe Robot do
   end
 
   it 'can move forward' do    
-    @location_mock.expect :move, nil
+    @location_mock.expect :move_forward, nil
 
     assert @robot.respond_to?(:move), 'expected the robot to have a move method'
 
