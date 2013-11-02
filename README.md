@@ -25,6 +25,15 @@ Your toy robot has 5 commands that it can accept:
 * Report 
  * Announces the X, Y and facing direction of the robot (for now this can just be output to a commandline or equivilent)
 
+
+In addition to these commands the robot must: 
+* Exists on a table between the positions [0,0] and [10, 10]
+* If the robot tries to move into an invalid position they will remain where they are
+* The robot can have other commands called before the 'place' command, however they are ignored
+* Invalid 'place' commands are ignored (e.g. outside the table, invalid direction)
+* The 'report' command must return 'INVALID ROBOT PLACEMENT', or a varient of it, if the robot hasn't been placed yet.
+* Commands are read in through a file or stdin
+
 More conditions and rules will be added as the implementation is fleshed out.
 
 Prerequisits
