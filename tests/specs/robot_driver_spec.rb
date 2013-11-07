@@ -10,4 +10,18 @@ describe RobotController do
 
     @robot_mock.verify
   end
+
+  it 'can interpret the LEFT command' do
+    @robot_mock.expect :rotate_left, nil
+    @robot_controller.interpret_command('LEFT')
+
+    @robot_mock.verify
+  end
+
+  it 'can interpret the RIGHT command' do
+    @robot_mock.expect :rotate_right, nil
+    @robot_controller.interpret_command('RIGHT')
+
+    @robot_mock.verify
+  end
 end

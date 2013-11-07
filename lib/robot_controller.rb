@@ -1,6 +1,8 @@
 class RobotController
   @@commands_map = {
-    'PLACE' => PlaceCommand.new
+    'PLACE' => PlaceCommand.new,
+    'LEFT' => LeftCommand.new,
+    'RIGHT' => RightCommand.new,
   }
   def initialize(robot)
     @robot = robot
