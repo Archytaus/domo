@@ -9,6 +9,8 @@ class Direction
       EastDirection.new
     when 'West'
       WestDirection.new
+    else
+      nil
     end
   end
 end

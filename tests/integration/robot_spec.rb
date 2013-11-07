@@ -8,6 +8,18 @@ describe Robot do
     @robot.place(0, 0, 'North')
   end
 
+  it 'can be placed in an invalid position' do
+    @robot.place(-1, -1, 'North')
+  end
+
+  it 'ignores commands called before place' do
+    @robot.move
+    @robot.rotate_left
+    assert_equal 'INVALID ROBOT PLACEMENT', @robot.report
+    @robot.place(3, 3, 'South')
+    assert_equal '[3, 3] South', @robot.report
+  end
+
   it 'can move around and report' do
     @robot.place(3, 3, 'South')
     @robot.move

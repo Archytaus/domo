@@ -20,7 +20,12 @@ class Location
     @direction = @direction.rotate_right
   end
 
-  def self.create(x, y, direction)
-    Location.new(Position.new(x, y), Direction.from_str(direction))
+  def self.create(x = nil, y = nil, direction_str = nil)    
+    position = Position.create(x, y)
+    direction = Direction.from_str(direction_str)
+    
+    return InvalidLocation.new if position.nil? || direction.nil?
+    
+    return Location.new(position, direction) 
   end
 end

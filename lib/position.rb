@@ -14,4 +14,8 @@ class Position
   def report
     return "[#{@x}, #{@y}]"
   end
+
+  def self.create(x = nil, y = nil)
+    return Position.new(x, y) if !x.nil? && !y.nil?
+  end
 end
