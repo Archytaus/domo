@@ -16,3 +16,15 @@ class RightCommand
     robot.rotate_right
   end
 end
+
+class MoveCommand
+  def evaluate(robot, args)
+    robot.move
+  end
+end
+
+class ReportCommand
+  def evaluate(robot, args)
+    robot.report
+  end
+end

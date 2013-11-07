@@ -24,4 +24,18 @@ describe RobotController do
 
     @robot_mock.verify
   end
+
+  it 'can interpret the MOVE command' do
+    @robot_mock.expect :move, nil
+    @robot_controller.interpret_command('MOVE')
+
+    @robot_mock.verify
+  end
+
+  it 'can interpret the REPORT command' do
+    @robot_mock.expect :report, nil
+    @robot_controller.interpret_command('REPORT')
+
+    @robot_mock.verify
+  end
 end

@@ -3,6 +3,8 @@ class RobotController
     'PLACE' => PlaceCommand.new,
     'LEFT' => LeftCommand.new,
     'RIGHT' => RightCommand.new,
+    'REPORT' => ReportCommand.new,
+    'MOVE' => MoveCommand.new
   }
   def initialize(robot)
     @robot = robot
@@ -17,6 +19,8 @@ class RobotController
     command_name = command_params.first
     command = find_command(command_name)
 
-    command.evaluate(@robot, command_params.last) if command
+    if command
+      command.evaluate(@robot, command_params.last)
+    end
   end
 end
