@@ -15,7 +15,13 @@ class Position
     return "[#{@x}, #{@y}]"
   end
 
+  def self.valid_position(x, y)
+    return x && y &&
+      x >= 0 && x <= 10 &&
+      y >= 0 && y <= 10
+  end
+
   def self.create(x = nil, y = nil)
-    return Position.new(x, y) if !x.nil? && !y.nil?
+    return Position.new(x, y) if valid_position(x, y)
   end
 end
