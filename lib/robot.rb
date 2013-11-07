@@ -6,7 +6,8 @@ class Robot
   end
 
   def place(x, y, direction)
-    @location = Location.create(x, y, direction)
+    new_location = Location.create(x, y, direction)
+    @location = new_location if new_location.valid?
   end
 
   def report

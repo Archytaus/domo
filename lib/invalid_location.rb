@@ -2,6 +2,10 @@ class InvalidLocation
   def initialize
   end
 
+  def valid?
+    false
+  end
+
   def report
     "INVALID ROBOT PLACEMENT"
   end

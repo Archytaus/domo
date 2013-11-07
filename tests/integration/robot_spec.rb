@@ -20,6 +20,12 @@ describe Robot do
     assert_equal '[3, 3] South', @robot.report
   end
 
+  it 'ignores invalid place commands' do
+    @robot.place(3, 3, 'South')
+    @robot.place(11, 11, '')
+    assert_equal '[3, 3] South', @robot.report
+  end
+
   it 'can move around and report' do
     @robot.place(3, 3, 'South')
     @robot.move

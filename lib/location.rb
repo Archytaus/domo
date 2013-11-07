@@ -8,6 +8,10 @@ class Location
     "#{@position.report} #{@direction.report}"
   end
 
+  def valid?
+    true
+  end
+  
   def move_forward
     @position += @direction.to_position
   end
