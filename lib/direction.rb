@@ -1,13 +1,14 @@
 class Direction
   def self.from_str(dir_str)
-    case dir_str
-    when 'NORTH'
+    dir_str ||= ''
+    case dir_str.downcase.to_sym
+    when :north
       NorthDirection.new
-    when 'SOUTH'
+    when :south
       SouthDirection.new
-    when 'EAST'
+    when :east
       EastDirection.new
-    when 'WEST'
+    when :west
       WestDirection.new
     else
       nil
