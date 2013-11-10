@@ -8,6 +8,7 @@ class Robot
   def place(x, y, direction)
     new_location = Location.create(x, y, direction)
     @location = new_location if new_location.valid?
+    nil
   end
 
   def report
@@ -16,13 +17,16 @@ class Robot
 
   def move
     @location.move_forward
+    nil
   end
 
   def rotate_left
     @location.rotate_left
+    nil
   end
 
   def rotate_right
     @location.rotate_right
+    nil
   end
 end

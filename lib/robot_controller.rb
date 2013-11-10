@@ -1,26 +1,30 @@
 class RobotController
-  @@commands_map = {
-    'PLACE' => PlaceCommand.new,
-    'LEFT' => LeftCommand.new,
-    'RIGHT' => RightCommand.new,
-    'REPORT' => ReportCommand.new,
-    'MOVE' => MoveCommand.new
-  }
-  def initialize(robot)
-    @robot = robot
+  def initialize(robot = nil)
+    @robot = robot || Robot.new
   end
 
-  def find_command(command_name)
-    @@commands_map[command_name.upcase]
+  def place(args)
+    split_args = args.first.split(',')
+    @robot.place(split_args[0].to_i, split_args[1].to_i, split_args[2].upcase)
   end
 
-  def interpret_command(command)
-    command_params = command.split(' ')
-    command_name = command_params.first
-    command = find_command(command_name)
+  def left
+    @robot.rotate_left
+  end
 
-    if command
-      command.evaluate(@robot, command_params.last)
-    end
+  def right
+    @robot.rotate_right
+  end
+
+  def report
+    @robot.report
+  end
+
+  def move
+    @robot.move
+  end
+
+  def method_missing(name, *args, &block)
+    raise "Unknown command: '#{name}'"
   end
 end
