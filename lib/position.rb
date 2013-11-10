@@ -7,18 +7,28 @@ class Position
   end
 
   def +(other)
-    return Position.new(self.x + other.x, 
-                        self.y + other.y)
+    new_position = Position.new(self.x + other.x, 
+                                self.y + other.y)
+    
+    if new_position.valid?
+      return new_position 
+    else
+      return self
+    end
   end
 
   def report
     return "[#{@x}, #{@y}]"
   end
 
+  def valid?
+    return @x && @y &&
+      @x >= 0 && @x <= 10 &&
+      @y >= 0 && @y <= 10
+  end
+
   def self.valid_position(x, y)
-    return x && y &&
-      x >= 0 && x <= 10 &&
-      y >= 0 && y <= 10
+    return Position.new(x, y).valid?
   end
 
   def self.create(x = nil, y = nil)
