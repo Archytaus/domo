@@ -38,4 +38,17 @@ describe RobotController do
 
     @robot_mock.verify
   end
+
+  it 'handles invalid commands' do
+
+    assert_raises(RuntimeError) { @robot_controller.invalid_command }
+
+    begin
+      @robot_controller.invalid_command  
+    rescue Exception => e
+      assert_equal "Unknown command: 'invalid_command'", e.to_s
+    end
+    
+    @robot_mock.verify
+  end
 end
