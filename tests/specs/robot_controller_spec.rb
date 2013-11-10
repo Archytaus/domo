@@ -11,6 +11,19 @@ describe RobotController do
     @robot_mock.verify
   end
 
+  it 'handles invalid PLACE arguments' do
+    invalid_args = '1'
+    assert_raises(RuntimeError) { @robot_controller.place([invalid_args]) }
+
+    begin
+      @robot_controller.place([invalid_args])
+    rescue Exception => e
+      assert_equal "wrong number of arguments (1 expected 3)", e.to_s
+    end
+    
+    @robot_mock.verify
+  end
+
   it 'can interpret the LEFT command' do
     @robot_mock.expect :rotate_left, nil
     @robot_controller.left
@@ -40,7 +53,6 @@ describe RobotController do
   end
 
   it 'handles invalid commands' do
-
     assert_raises(RuntimeError) { @robot_controller.invalid_command }
 
     begin

@@ -5,6 +5,10 @@ class RobotController
 
   def place(args)
     split_args = args.first.split(',')
+    if split_args.size != 3
+      raise "wrong number of arguments (#{split_args.size} expected 3)"
+    end
+
     @robot.place(split_args[0].to_i, split_args[1].to_i, split_args[2].upcase)
   end
 
