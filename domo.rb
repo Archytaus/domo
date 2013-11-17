@@ -14,7 +14,20 @@ def is_quit(input)
   input.empty?
 end
 
-controller = RobotController.new
+def read_table_size
+  table_size_raw = File.read("table_size.txt")
+  Position.from_str(table_size_raw)
+end
+
+def read_dirt_positions
+  positions_raw = []
+  File.foreach("dirt_positions.txt") { |line| positions_raw << line }
+  positions_raw.map {|raw_position| Position.from_str(raw_position) }
+end
+
+table = Table.new(read_table_size)
+table.place_dirt(read_dirt_positions)
+controller = RobotController.new(table)
 
 running = true
 while(running)

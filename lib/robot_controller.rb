@@ -1,6 +1,7 @@
 class RobotController
-  def initialize(robot = nil)
-    @robot = robot || Robot.new
+  def initialize(table)
+    @table = table
+    @robot = table.robot
   end
 
   def place(args)
