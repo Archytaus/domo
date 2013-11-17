@@ -1,7 +1,11 @@
 describe RobotController do
   before do
     @robot_mock = Minitest::Mock.new
-    @robot_controller = RobotController.new(@robot_mock)
+
+    @table_mock = Minitest::Mock.new
+    @table_mock.expect :robot, @robot_mock
+    
+    @robot_controller = RobotController.new(@table_mock)
   end
 
   it 'can interpret the PLACE command' do
