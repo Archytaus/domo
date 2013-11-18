@@ -23,11 +23,15 @@ class Table
 
   def clean_at(position)
     dirt = dirt_at(position)
-    @dirts.remove(dirt) if dirt
+    @dirts.delete(dirt) if dirt
   end
 
   def has_dirt_at?(position)
     !dirt_at(position).nil?
+  end
+
+  def self.current
+    @@current
   end
 
   def self.current=(table)
