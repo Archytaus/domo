@@ -5,22 +5,27 @@ describe Position do
     Table.current = @table
 
     @table.expect :max_position, Position.new(10, 10)
-    @table.expect :dirt_at, nil, [Position]
   end
 
   it 'can be created' do
+    @table.expect :has_dirt_at?, false, [Position]
+
     @position = Position.create(0, 0)
     assert_equal 0, @position.x
     assert_equal 0, @position.y
   end
 
   it 'can be added' do
+    @table.expect :has_dirt_at?, false, [Position]
+
     @position = Position.new(3, 3) + Position.new(3, 3)
     assert_equal 6, @position.x
     assert_equal 6, @position.y
   end
 
   it 'can be reported' do
+    @table.expect :has_dirt_at?, false, [Position]
+
     @position = Position.new(10, 10)
     assert_equal "[10, 10]", @position.report
   end
@@ -34,6 +39,13 @@ describe Position do
     assert_nil position
   end
 
+  it 'cannot be created where there is dirt' do
+    @table.expect :has_dirt_at?, true, [Position]
+
+    position = Position.create(3, 3)
+    assert_nil position
+  end
+
   it 'cannot be added outside [0,0] and [10,10]' do
     position = Position.new(0, 0) + Position.new(-1, -1)
     assert_equal 0, position.x
@@ -43,5 +55,13 @@ describe Position do
     position = Position.new(10, 10) + Position.new(10, 10)
     assert_equal 10, position.x
     assert_equal 10, position.y
+  end
+
+  it 'cannot be added where there is dirt' do
+    @table.expect :has_dirt_at?, true, [Position]
+
+    position = Position.new(1, 1) + Position.new(1, 1)
+    assert_equal 1, position.x
+    assert_equal 1, position.y
   end
 end

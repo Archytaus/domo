@@ -26,6 +26,10 @@ class Table
     @dirts.remove(dirt) if dirt
   end
 
+  def has_dirt_at?(position)
+    !dirt_at(position).nil?
+  end
+
   def self.current=(table)
     @@current = table
   end
@@ -35,7 +39,7 @@ class Table
   end
 
   def self.has_dirt_at?(position)
-    return @@current.dirt_at(position) != nil
+    return @@current.has_dirt_at?(position)
   end
 
   def self.clean_at(position)

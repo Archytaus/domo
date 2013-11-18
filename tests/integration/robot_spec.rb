@@ -36,4 +36,10 @@ describe Robot do
     @robot.move
     assert_equal '[4, 2] East', @robot.report    
   end
+
+  it 'cannot be placed where there is dirt' do
+  end
+
+  it 'cannot move to where there is dirt' do
+  end
 end
