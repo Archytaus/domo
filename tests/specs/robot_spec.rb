@@ -45,4 +45,15 @@ describe Robot do
 
     @location_mock.verify
   end
+
+  it 'can clean' do
+    @position_mock = Minitest::Mock.new
+    @location_mock.expect :forward_position, @position_mock
+    @table.expect :clean_at, nil, [@position_mock]
+
+    assert @robot.respond_to?(:clean), 'expected the robot to have a clean method'
+    @robot.clean
+
+    @table.verify
+  end
 end

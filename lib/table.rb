@@ -21,6 +21,11 @@ class Table
     return @dirts.select { |dirt| dirt.position == position }.first
   end
 
+  def clean_at(position)
+    dirt = dirt_at(position)
+    @dirts.remove(dirt) if dirt
+  end
+
   def self.current=(table)
     @@current = table
   end
@@ -31,5 +36,9 @@ class Table
 
   def self.has_dirt_at?(position)
     return @@current.dirt_at(position) != nil
+  end
+
+  def self.clean_at(position)
+    @@current.clean_at(position)
   end
 end

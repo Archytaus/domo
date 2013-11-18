@@ -24,6 +24,10 @@ class Location
     @direction = @direction.rotate_right
   end
 
+  def forward_position
+    return @position + @direction.to_position
+  end
+
   def self.create(x = nil, y = nil, direction_str = nil)    
     position = Position.create(x, y)
     direction = Direction.from_str(direction_str)

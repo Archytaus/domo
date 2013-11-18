@@ -29,6 +29,10 @@ class RobotController
     @robot.move
   end
 
+  def clean
+    @robot.clean
+  end
+
   def method_missing(name, *args, &block)
     raise "Unknown command: '#{name}'"
   end

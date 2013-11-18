@@ -57,6 +57,13 @@ describe RobotController do
     @robot_mock.verify
   end
 
+  it 'can interpret the CLEAN command' do
+    @robot_mock.expect :clean, nil
+    @robot_controller.clean
+
+    @robot_mock.verify
+  end
+
   it 'handles invalid commands' do
     assert_raises(RuntimeError) { @robot_controller.invalid_command }
 

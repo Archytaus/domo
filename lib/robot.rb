@@ -29,4 +29,9 @@ class Robot
     @location.rotate_right
     nil
   end
+
+  def clean
+    Table.clean_at(@location.forward_position)
+    nil
+  end
 end
