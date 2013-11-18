@@ -1,6 +1,11 @@
 describe Robot do
   before do
     @location_mock = Minitest::Mock.new
+    
+    @table = Minitest::Mock.new
+    Table.current = @table
+    @table.expect :max_position, Position.new(10, 10)
+
     @robot = Robot.new
     @robot.location = @location_mock
   end

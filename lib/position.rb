@@ -1,9 +1,5 @@
 class Position
   attr_accessor :x, :y
-  @@x_min = 0 
-  @@x_max = 10 
-  @@y_min = 0
-  @@y_max = 10
 
   def initialize(x = 0, y = 0)
     @x = x
@@ -21,14 +17,20 @@ class Position
     end
   end
 
+  def ==(other)
+    return @x == other.x && @y == other.y
+  end
+
   def report
     return "[#{@x}, #{@y}]"
   end
 
   def valid?
+    max_position = Table.max_position
     return @x && @y &&
-      @x >= @@x_min && @x <= @@y_max &&
-      @y >= @@y_min && @y <= @@y_max
+      @x >= 0 && @x <= max_position.x &&
+      @y >= 0 && @y <= max_position.y && 
+      !Table.has_dirt_at?(self)
   end
 
   def self.valid_position(x, y)

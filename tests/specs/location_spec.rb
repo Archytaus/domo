@@ -1,5 +1,8 @@
 describe Location do
   before do
+    @table = Minitest::Mock.new
+    Table.current = @table
+    
     @direction_mock = Minitest::Mock.new
     @position_mock = Minitest::Mock.new
   end

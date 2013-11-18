@@ -3,6 +3,7 @@ describe RobotController do
     @robot_mock = Minitest::Mock.new
 
     @table_mock = Minitest::Mock.new
+    Table.current = @table_mock
     @table_mock.expect :robot, @robot_mock
     
     @robot_controller = RobotController.new(@table_mock)

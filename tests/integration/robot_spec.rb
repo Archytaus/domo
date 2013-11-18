@@ -1,5 +1,6 @@
 describe Robot do
   before do
+    Table.new(Position.new(10, 10))
     @robot = Robot.new
   end
 

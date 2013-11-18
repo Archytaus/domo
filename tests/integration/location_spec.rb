@@ -1,4 +1,8 @@
 describe Location do
+  before do
+    Table.new(Position.new(10, 10))
+  end
+
   it 'can be created with a x, y position and a direction' do
     location = Location.create(0, 0, 'North')
     refute_nil location, 'expected a location to be created'
