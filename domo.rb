@@ -53,6 +53,10 @@ while(running)
     puts e
   end
   
+  unless Table.any_dirt?
+    running = false
+    puts "Game Over!"
+  end
 end
 
 puts 'Domo arigato mr roboto'

@@ -35,6 +35,10 @@ class Table
     !has_dirt_at?(position)
   end
 
+  def any_dirt?
+    @dirts.any?
+  end
+
   def self.current
     @@current
   end
@@ -57,5 +61,9 @@ class Table
 
   def self.clean_at(position)
     @@current.clean_at(position)
+  end
+
+  def self.any_dirt?
+    @@current.any_dirt?
   end
 end
