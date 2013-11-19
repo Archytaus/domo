@@ -29,8 +29,7 @@ class Position
     max_position = Table.max_position
     return @x && @y &&
       @x >= 0 && @x <= max_position.x &&
-      @y >= 0 && @y <= max_position.y && 
-      !Table.has_dirt_at?(self)
+      @y >= 0 && @y <= max_position.y
   end
 
   def self.valid_position(x, y)
@@ -45,6 +44,6 @@ class Position
     tokens = str.split(',')
     x = tokens.first.to_i
     y = tokens.last.to_i
-    return Position.new(x, y) if valid_position(x, y)
+    return Position.new(x, y)
   end
 end

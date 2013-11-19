@@ -6,6 +6,7 @@ puts 'Commands are: - PLACE X,Y,DIRECTION'
 puts '              - LEFT'
 puts '              - RIGHT'
 puts '              - MOVE'
+puts '              - CLEAN'
 puts '              - REPORT'
 puts 'A blank empty line will quit the program'
 

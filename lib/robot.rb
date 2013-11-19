@@ -7,7 +7,7 @@ class Robot
 
   def place(x, y, direction)
     new_location = Location.create(x, y, direction)
-    @location = new_location if new_location.valid?
+    @location = new_location if new_location.valid? && Table.can_move_to?(new_location)
     nil
   end
 
@@ -16,7 +16,7 @@ class Robot
   end
 
   def move
-    @location.move_forward
+    @location.move_forward if Table.can_move_to?(@location.forward_position)
     nil
   end
 
@@ -31,7 +31,10 @@ class Robot
   end
 
   def clean
-    Table.clean_at(@location.forward_position)
-    nil
+    if Table.clean_at(@location.forward_position)
+      "Cleaned Dirt"
+    else 
+      "Nothing to clean"
+    end
   end
 end

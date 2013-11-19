@@ -20,6 +20,9 @@ describe Robot do
   end
 
   it 'can move forward' do    
+    @position_mock = Minitest::Mock.new
+    @location_mock.expect :forward_position, @position_mock
+    @table.expect :can_move_to?, true, [@position_mock]
     @location_mock.expect :move_forward, nil
 
     assert @robot.respond_to?(:move), 'expected the robot to have a move method'

@@ -3,7 +3,7 @@ class Table
   attr_reader :dirts
   attr_reader :robot
 
-  def initialize(max_position)
+  def initialize(max_position = nil)
     @@current = self
 
     @max_position = max_position
@@ -24,10 +24,15 @@ class Table
   def clean_at(position)
     dirt = dirt_at(position)
     @dirts.delete(dirt) if dirt
+    return !dirt.nil?
   end
 
   def has_dirt_at?(position)
     !dirt_at(position).nil?
+  end
+
+  def can_move_to?(position)
+    !has_dirt_at?(position)
   end
 
   def self.current
@@ -40,6 +45,10 @@ class Table
 
   def self.max_position
     @@current.max_position
+  end
+
+  def self.can_move_to?(position)
+    return @@current.can_move_to?(position)
   end
 
   def self.has_dirt_at?(position)

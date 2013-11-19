@@ -10,6 +10,10 @@ class InvalidLocation
     "INVALID ROBOT PLACEMENT"
   end
 
+  def forward_position
+    nil
+  end
+
   def move_forward
   end
 
